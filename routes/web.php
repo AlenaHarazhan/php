@@ -1,5 +1,7 @@
 <?php
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,9 +12,27 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes([
+	'reset' => false,
+	'confirm' => false,
+	'verify' => false
+]);
 
-Route::get('/','BaseController@getIndex');
+Route::get('/logout', 'Auth\LoginController@logout')->name('get-logout');
+
+
+
+Route:: group(['middleware' => 'auth'], function(){
+Route::get('/home', 'HomeController@index')->name('home');
+});
+
+Route::get('/', 'HomeController@index')->name('index');
+/*Route::get('/', function () {
+    return view('index.php');
+});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/','BaseController@getIndex');
+
+*/
