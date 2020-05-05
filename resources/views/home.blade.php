@@ -4,12 +4,12 @@
 @endpush
 @section('content')
 <div id="center">
-
+  <form action="{{asset('home')}}" method="post">
+    @csrf
     <fieldset class="field">
         <legend>Форма заказа</legend>
         <p>Пожалуйста, заполните эту форму, чтобы сделать заказ.</p>
         <hr>
-        <form method="POST">
 
         <label for="category">Выберите категорию</label>
 
@@ -22,14 +22,34 @@
         </select>
     </br>
 
-        <label for="login"><b>Название картинки</b></label>
+        <label for="name"><b>Название картинки</b></label>
         <input id="name" type="text"  name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-        <label for="login"><b>Ваше имя</b></label>
-        <input id="name" type="text"  name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-        <label for="login"><b>Ваш E-mail</b></label>
+        @error('name')
+     <span class="danger" role="alert">
+         <strong>{{ $message }}</strong>
+     </span>
+    @enderror
+        <label for="myname"><b>Ваше имя</b></label>
+        <input id="myname" type="text"  name="myname" value="{{ old('name') }}" required autocomplete="name" autofocus>
+        @error('myname')
+     <span class="danger" role="alert">
+         <strong>{{ $message }}</strong>
+     </span>
+    @enderror
+        <label for="email"><b>Ваш E-mail</b></label>
         <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="email">
-        <label for="login"><b>Ваш телефон</b></label>
-        <input id="name" type="text"  name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+        @error('email')
+     <span class="danger" role="alert">
+         <strong>{{ $message }}</strong>
+     </span>
+    @enderror
+        <label for="phone"><b>Ваш телефон</b></label>
+        <input id="phone" type="text" name="phone" value="{{ old('name') }}" required autocomplete="name" autofocus>
+        @error('phone')
+     <span class="danger" role="alert">
+         <strong>{{ $message }}</strong>
+     </span>
+    @enderror
         <div class="registerbtn">
             <button type="submit" class="registerbtn">
             {{ __('Отправить') }}
