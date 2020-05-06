@@ -25,10 +25,11 @@ public function index()
 return view('home');
 }
 public function postIndex(OrderRequest $r){
-    $r['user_id'] = Auth::user()->id;
-
-     Order::create($r->all());
-     return redirect()->back();
-
+$r['user_id']=Auth::user()->id;
+$r['status']='new';
+$r['showhide']=1;
+$pic = \App::make('\App\Libs\Imag')->url($_FILES['picture1']['tmp_name']);
+Order::create($r->all());
+return redirect()->back();
 }
 }

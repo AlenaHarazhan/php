@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->string('email');
             $table->string('phone');
             $table->text('myname');
-            $table->string('category')->nullable();
+            $table->string('category');
             $table->integer('user_id');
             $table->timestamps();
         });
