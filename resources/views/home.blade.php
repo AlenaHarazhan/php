@@ -3,10 +3,14 @@
 <link type="text/css" href="{{asset('/media/css/home.css')}}" rel="stylesheet" />
 @endpush
 @section('content')
+
 <div id="center">
     <form enctype="multipart/form-data" action="{{asset('home')}}" method="post">
         @csrf
         <fieldset class="field">
+@foreach($objs as $one)
+<div class="order">{{$one->name}}</div>
+@endforeach
             <legend>Форма заказа</legend>
             <p>Пожалуйста, заполните эту форму, чтобы сделать заказ.</p>
             <hr>

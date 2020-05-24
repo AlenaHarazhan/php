@@ -22,7 +22,8 @@ $this->middleware('auth');
 */
 public function index()
 {
-return view('home');
+$objs = Order::where('user_id', Auth::user()->id)->orderBy('id','DESC')->paginate(10);
+return view('home', compact('objs'));
 }
 public function postIndex(OrderRequest $r){
 $r['user_id']=Auth::user()->id;
