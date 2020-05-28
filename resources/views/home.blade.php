@@ -4,7 +4,28 @@
 @endpush
 @section('content')
 <div id="center">
-     <form enctype="multipart/form-data" action="{{asset('home')}}" method="post">
+    <table class="table table-bordered table-striped" width="100%">
+        <tr>
+            <th width="200px">Изображение</th>
+            <th>Название</th>
+            <th>Описание</th>
+            <th>Категория</th>
+            <th>Действия</th>
+        </tr>
+@foreach($objs as $one)
+<tr>
+            <td>{{$one->picture}}</td>
+            <th>{{$one->name}}</th>
+            <th>{{$one->body}}</th>
+            <th>{{$one->catalog_id}}</th>
+            <th>Удалить/редактировать</th>
+        </tr>
+@endforeach
+<p align="center">{!!$objs->links()!!}</p>
+    </table>
+
+
+    <form enctype="multipart/form-data" action="{{asset('home')}}" method="post">
         @csrf
         <fieldset class="field">
             @foreach($objs as $one)
@@ -67,34 +88,45 @@
         </fieldset>
     </form>
     <form>
-    <form method="post" enctype="multipart/form-data" action="{{asset('product/add')}}" method="post">
-         @csrf
-        <div class="form-group">
-            @foreach($objs as $one)
-            <div class="product">{{$one->name}}</div>
-            @endforeach
-            <legend>Форма добавления товара</legend>
-            <p>Пожалуйста, заполните эту форму, чтобы сделать заказ.</p>
-            <br>
-
-            <label for="name">Наименование товара</label>
-            <input type="text" class="form-control" id="name" name="name">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <div class="form-group">
-            <label for="price">Цена</label>
-            <input type="text" class="form-control" id="price" name="price">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <div class="form-group">
-            <label for="body">Описание товара</label>
-            <textarea class="form-control" id="body" rows="3"></textarea>
+        <form method="post" enctype="multipart/form-data" action="{{asset('product/add')}}" method="post">
+            @csrf
             <div class="form-group">
-                <label for="picture1">Загрузите картинку</label>
-                <input type="file" class="form-control-file" id="picture1" name="picture1">
+                @foreach($objs as $one)
+                <div class="product">{{$one->name}}</div>
+                @endforeach
+                <legend>Форма добавления товара</legend>
+                <p>Пожалуйста, заполните эту форму, чтобы сделать заказ.</p>
+                <br>
+                <label for="name">Наименование товара</label>
+                <input type="text" class="form-control" id="name" name="name">
+                @error('name')
+                <div>{{$message}}</div>
+                @enderror
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div>
-@endsection
+            <div class="form-group">
+                <label for="price">Цена</label>
+                <input type="text" class="form-control" id="price" name="price">
+                @error('price')
+                <div>{{$message}}</div>
+                @enderror
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="body">Описание товара</label>
+                <textarea class="form-control" id="body" rows="3" name = "body"></textarea>
+                @error('body')
+                <div>{{$message}}</div>
+                @enderror
+                <div class="form-group">
+                    <label for="picture1">Загрузите картинку</label>
+                    <input type="file" class="form-control-file" id="picture1" name="picture1">
+                    @error('picture1')
+                    <div>{{$message}}</div>
+                    @enderror
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    @endsection

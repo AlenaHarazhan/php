@@ -24,8 +24,8 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=> 'requared|min:2',
-            'price'=> 'requared'
+            'name'=> 'required|min:2',
+            'price'=> 'required'
         ];
     }
 }
