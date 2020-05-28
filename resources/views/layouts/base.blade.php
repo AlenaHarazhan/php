@@ -50,14 +50,15 @@
                     <p><img src="pict1.jpg" alt="Пора в отпуск"></p>
                 </div>
                 @yield('content')
-                <div id="footer">
+
+            </div>
+        </div>
+        <div id="footer">
                     <div>
                         2020, GeniusErEndDev, Inc. Suspendisse pellentesque augue porttitor eros dignissim, vitae mollis odio porttitor. Nullam sit amet diam sit amet tellus ullamcorper varius a vitae tellus. Suspendisse nec nisl lobortis, vehicula felis sed, ornare nulla. <br />
                         Контакты: <a href="#">genius@imaguru.co</a>
                     </div>
                 </div>
-            </div>
-        </div>
     </div>
     @stack('scripts')
 </body>

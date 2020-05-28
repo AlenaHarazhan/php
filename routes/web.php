@@ -15,6 +15,7 @@ Route::get('/','BaseController@getIndex');
 Route::get('/login-form','BaseController@login');
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('product/add', 'ProductController@postAdd');
+
 Route::post('home', 'HomeController@postIndex');
