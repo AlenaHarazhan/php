@@ -11,6 +11,6 @@ $r['user_id'] = Auth::user()->id;
 $r['status'] = '';
 unset($r['_token']);
 Product::create($r->all());
-return redirect()->back;
+return redirect()->back();
 }
 }
