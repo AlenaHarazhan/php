@@ -111,16 +111,20 @@
             <th>Категория</th>
             <th>Действия</th>
         </tr>
-        @foreach($objs as $one)
+        @foreach($objs as $item)
         <tr>
-            <td>{{$one->picture}}</td>
-            <th>{{$one->name}}</th>
-            <th>{{$one->body}}</th>
-            <th>{{$one->catalog_id}}</th>
-            <th>Удалить/редактировать</th>
-        </tr>
-        @endforeach
-        <p align="center">{!!$objs->links()!!}</p>
-    </table>
-</div>
-@endsection
+            <th>
+                <img src="/uploads/20/ss_{{$item->picture}}" alt="">
+            </th>
+            <td>{{$item->name}}</td>
+            <th>{{$item->body}}</th>
+            <th>{{$item->price}}</th>
+            <th>Редактировать <br />
+                <a href="{{asset('product/delete/'.$item->id)}}" class="btn btn-block btn-default">
+                Удалить</a></th>
+            </tr>
+            @endforeach
+            <p align="center">{!!$objs->links()!!}</p>
+        </table>
+    </div>
+    @endsection
