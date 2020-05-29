@@ -11,11 +11,17 @@
 |
 */
 
-Route::get('/','BaseController@getIndex');
-Route::get('/login-form','BaseController@login');
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', 'BaseController@getIndex');
+Route::get('/login-form', 'BaseController@login');
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
-Route::post('product/add', 'ProductController@postAdd');
 
+Route::get('/home', 'HomeController@index')->name('home');
 Route::post('home', 'HomeController@postIndex');
+Route::get('product/delete/{id}', 'HomeController@getDelete');
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
