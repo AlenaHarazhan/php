@@ -1,6 +1,6 @@
 @extends('layouts.base')
 @push('styles')
-<link type="text/css" href="{{asset('/media/css/home.css')}}" rel="stylesheet" />
+<link type="text/css" href="{{asset('css/home.css')}}" rel="stylesheet" />
 @endpush
 @section('content')
 <div id="center">
