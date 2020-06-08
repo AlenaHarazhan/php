@@ -1,14 +1,16 @@
 @extends('layouts.base')
 @push('styles')
-<link type="text/css" href="{{asset('css/home.css')}}" rel="stylesheet" />
-<link href="{{asset('css/modal.css')}}" rel="stylesheet"/>
+<link type="text/css" href="{{asset('style.css')}}" rel="stylesheet" />
+<link type="text/css" href="{{asset('css/modal.css')}}" rel="stylesheet"/>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @endpush
-<!-- Scripts -->
 
+<!-- Scripts -->
 @push('scripts')
 
+
 <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
-<script src="{{ asset('js/app.js') }}" defer></script>
+<script src="{{asset('js/app.js')}}" defer></script>
 <script src="{{asset('js/modal.js')}}"></script>
 @endpush
 @section('content')
@@ -104,7 +106,7 @@
                             <th>Редактировать </br >
                                 <a href="{{asset('product/delete/'.$one->id)}}" class="btn btn-block btn-default">
                                 Удалить</a>
-                                <a href="#" class="btn btn-block btn-primary show_modal" data-id="{{$one->id}}">Просмотр</a>
+                                 <a href="#" class="btn btn-block btn-primary show-modal" data-id="{{$one->id}}">Просмотр</a>
                             </th>
                         </tr>
                         @endforeach
