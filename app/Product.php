@@ -15,6 +15,6 @@ class Product extends Model
         'user_id',
         'status'];
     public function catalog(){
-        return $this->belongsTo('App\Catalog', 'catalog_id', 'id');
+        return $this->belongsTo('App\Catalog', 'catalog_id', 'name');
     }
 }

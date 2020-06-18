@@ -13,9 +13,9 @@
 
 use Illuminate\Support\Facades\Route;
 Route::get('/code', 'HomeController@code')->name('code');
-
 Route::get('/', 'BaseController@getIndex');
 Route::get('/login-form', 'BaseController@login');
+Route::get('home/edit', 'HomeController@edit')->middleware('admin');
 
 Auth::routes();
 //Ajax
@@ -28,3 +28,4 @@ Route::get('product/delete/{id}', 'HomeController@getDelete');
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
