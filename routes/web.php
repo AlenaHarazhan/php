@@ -21,11 +21,14 @@ Auth::routes();
 //Ajax
 Route::post('/ajax/modal','Ajax\ModalController@postOne');
 //Others
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('cookie');
 Route::post('home', 'HomeController@postIndex');
 Route::get('product/delete/{id}', 'HomeController@getDelete');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+});
+Route::group(['middleware' => 'lang'], function () {
+    Route::get('lang', 'LangController@getIndex');
 });
 Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');

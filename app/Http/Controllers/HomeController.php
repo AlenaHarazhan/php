@@ -23,10 +23,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
+        /*dd($request->user);*/
+
+        $user = $request->user;
         $objs = Product::where('user_id', Auth::user()->id)->orderBy('id','DESC')->paginate(10);
-        return view('home', compact('objs'));
+        setcookie('user', Auth::user()->name, time()+3600, '/');
+        return view('home', compact('objs', 'user'));
 
     }
     public function postIndex(ProductRequest $r){

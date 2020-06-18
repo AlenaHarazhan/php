@@ -13,7 +13,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Форма добавления товара</div>
+                <div class="card-header">Форма добавления товара {{ $user }}</div>
                 <div class="card-body">
                     <form class="was-validated" action="{{asset('home')}}" method="post" enctype="multipart/form-data">
                         @csrf
