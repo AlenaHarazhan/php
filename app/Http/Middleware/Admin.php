@@ -14,9 +14,9 @@ class Admin
      * @return mixed
      */
     public function handle($request, Closure $next, $guard = null) {
-       if(Auth::user()->isAdmin != 1){
+       /*if(Auth::user()->isAdmin != 1){
        return redirect()->guest('auth/login');
     }
-      return $next($request);
+      return $next($request);*/
     }
 }
